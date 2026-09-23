@@ -1,4 +1,4 @@
-package com.systembanking;
+package com.systembanking.entities;
 
 public class ContaPoupanca extends Conta {
 
