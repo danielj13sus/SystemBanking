@@ -9,9 +9,9 @@ public abstract class Conta {
     private String agencia;
     private Usuario usuario;
 
-    public Conta(String numeroConta, Usuario usuario) {
-        this.numeroConta = numeroConta;
-        this.agencia = UUID.randomUUID().toString().substring(0,8);
+    public Conta(String agencia, Usuario usuario) {
+        this.numeroConta = UUID.randomUUID().toString().substring(0,8);
+        this.agencia = agencia;
         this.usuario = usuario;
         this.saldo = 0.0;
     }

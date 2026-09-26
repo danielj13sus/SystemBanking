@@ -19,11 +19,19 @@ public class Main {
         String email = input.nextLine();
         System.out.print("Telefone: ");
         String telefone = input.nextLine();
-        System.out.print("CPF: ");
+        System.out.print("CPF (exemplo: XXX.XXX.XXX-XX): ");
         String cpf = input.nextLine();
 
         // Criar o usuário
         Usuario usuario = new Usuario(nome, email, telefone, cpf);
+        System.out.print("----------------------\n" +
+                "USUÁRIO CADASTRADO!\n" +
+                usuario);
+
+
+
+
+
 
 
 

@@ -58,10 +58,20 @@ public class Usuario {
     }
 
     public void setCpf(String cpf) {
-        if (cpf != null && !cpf.trim().isEmpty() && cpf.matches("\\\\d{3}\\\\.\\\\d{3}\\\\.\\\\d{3}-\\\\d{2}")) {
-            this.cpf = cpf;
-        } else {
+        if (cpf == null
+                || cpf.isBlank()
+                || !cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}")) {
             throw new IllegalArgumentException("CPF inválido. Deve estar no formato XXX.XXX.XXX-XX.");
         }
+        this.cpf = cpf;
+    }
+
+    @Override
+    public String toString() {
+        return "Dados de cadastro do usuário:\n" +
+                "Nome: " + getNome() + "\n" +
+                "Email: " + getEmail() + "\n" +
+                "Telefone: " + getTelefone() + "\n" +
+                "CPF: " + getCpf() + "\n";
     }
 }
