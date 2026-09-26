@@ -1,20 +1,20 @@
 package com.systembanking.entities;
 
-public class Cliente {
+public class Usuario {
 
     private String nome;
     private String email;
     private String telefone;
     private String cpf;
 
-    Cliente() {
+    public Usuario() {
     }
 
-    Cliente(String nome, String email, String telefone, String cpf) {
+    public Usuario(String nome, String email, String telefone, String cpf) {
         setNome(nome);
         setEmail(email);
-        this.telefone = telefone;
-        this.cpf = cpf;
+        setTelefone(telefone);
+        setCpf(cpf);
     }
 
     public String getNome() {

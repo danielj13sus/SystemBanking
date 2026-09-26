@@ -1,16 +1,21 @@
 package com.systembanking.entities;
 
+import java.util.UUID;
+
 public abstract class Conta {
 
     private String numeroConta;
     private Double saldo;
     private String agencia;
+    private Usuario usuario;
 
-    public Conta(String numeroConta, String agencia) {
+    public Conta(String numeroConta, Usuario usuario) {
         this.numeroConta = numeroConta;
-        this.agencia = agencia;
+        this.agencia = UUID.randomUUID().toString().substring(0,8);
+        this.usuario = usuario;
         this.saldo = 0.0;
     }
+
 
     public String getNumeroConta() {
         return numeroConta;
@@ -54,5 +59,9 @@ public abstract class Conta {
         } else {
             throw new IllegalArgumentException("Agência não pode ser nula ou vazia.");
         }
+    }
+
+    public Usuario getCliente() {
+        return usuario;
     }
 }
