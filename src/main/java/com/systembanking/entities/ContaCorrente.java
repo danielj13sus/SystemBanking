@@ -4,8 +4,8 @@ public class ContaCorrente extends Conta {
 
     private static final Double LIMITE = 1000.0;
 
-    public ContaCorrente(String agencia, Usuario usuario) {
-        super(agencia, usuario);
+    public ContaCorrente(Usuario usuario) {
+        super(usuario);
     }
 
 }

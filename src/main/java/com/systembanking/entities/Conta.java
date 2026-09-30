@@ -1,19 +1,18 @@
 package com.systembanking.entities;
 
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Conta {
 
     private String numeroConta;
-    private Double saldo;
-    private String agencia;
+    private Double saldo = 0.0;
+    private static final String AGENCIA_PADRAO = "1234-5";
     private Usuario usuario;
 
-    public Conta(String agencia, Usuario usuario) {
-        this.numeroConta = UUID.randomUUID().toString().substring(0,8);
-        this.agencia = agencia;
+    public Conta(Usuario usuario) {
+        this.numeroConta = String.format("%08d", ThreadLocalRandom.current().nextInt(10000000));
         this.usuario = usuario;
-        this.saldo = 0.0;
     }
 
 
@@ -50,15 +49,7 @@ public abstract class Conta {
     }
 
     public String getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(String agencia) {
-        if (agencia != null && !agencia.trim().isEmpty()) {
-            this.agencia = agencia;
-        } else {
-            throw new IllegalArgumentException("Agência não pode ser nula ou vazia.");
-        }
+        return AGENCIA_PADRAO;
     }
 
     public Usuario getCliente() {
