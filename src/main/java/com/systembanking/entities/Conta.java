@@ -1,6 +1,5 @@
 package com.systembanking.entities;
 
-import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Conta {
@@ -11,7 +10,7 @@ public abstract class Conta {
     private Usuario usuario;
 
     public Conta(Usuario usuario) {
-        this.numeroConta = String.format("%08d", ThreadLocalRandom.current().nextInt(10000000));
+        this.numeroConta = String.format("%08d", ThreadLocalRandom.current().nextInt(1, 10000000));
         this.usuario = usuario;
     }
 
@@ -20,19 +19,11 @@ public abstract class Conta {
         return numeroConta;
     }
 
-    public void setNumeroConta(String numeroConta) {
-        if (numeroConta != null && !numeroConta.trim().isEmpty()) {
-            this.numeroConta = numeroConta;
-        } else {
-            throw new IllegalArgumentException("Número da conta não pode ser nulo ou vazio.");
-        }
-    }
-
     public Double getSaldo() {
         return saldo;
     }
 
-    public void depositar(Double valor) {
+    public void depositar(double valor) {
         if (valor > 0) {
             this.saldo += valor;
         } else {
@@ -40,7 +31,7 @@ public abstract class Conta {
         }
     }
 
-    public void sacar(Double valor) {
+    public void sacar(double valor) {
         if (valor >= 0 && valor <= saldo) {
             this.saldo -= valor;
         } else {
@@ -48,11 +39,7 @@ public abstract class Conta {
         }
     }
 
-    public String getAgencia() {
-        return AGENCIA_PADRAO;
-    }
-
-    public Usuario getCliente() {
+    public Usuario getUsuario() {
         return usuario;
     }
 }
