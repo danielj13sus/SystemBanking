@@ -42,4 +42,17 @@ public abstract class Conta {
     public Usuario getUsuario() {
         return usuario;
     }
+
+    public void renderJuros() {
+        // TODO Método vazio, pode ser sobrescrito por subclasses
+    }
+
+    public String imprimirInfoConta() {
+        return "Titular: " + usuario.getNome() + "\n" +
+                "Email: " + usuario.getEmail() + "\n" +
+                "Telefone: " + usuario.getTelefone() + "\n" +
+                "CPF: " + usuario.getCpf() + "\n" +
+                "Conta: " + getNumeroConta() + "\n" +
+                "Agência: " + AGENCIA_PADRAO + "\n";
+    }
 }

@@ -2,17 +2,21 @@ package com.systembanking.entities;
 
 public class ContaPoupanca extends Conta {
 
+    private static final double TAXA_JUROS_PADRAO = 0.5;
+
     public ContaPoupanca(Usuario usuario) {
         super(usuario);
     }
 
-    public void renderJuros(double taxa) {
-        if (taxa > 0) {
-            double juros = getSaldo() * (taxa / 100);
-            depositar(juros);
-        } else {
-            throw new IllegalArgumentException("Taxa de juros deve ser positiva.");
-        }
+    @Override
+    public void renderJuros() {
+        double juros = getSaldo() * TAXA_JUROS_PADRAO;
+        depositar(juros);
     }
 
+    @Override
+    public String imprimirInfoConta() {
+        return super.imprimirInfoConta() + "\n" +
+                "Saldo: R$ " + String.format("%.2f", getSaldo());
+    }
 }
